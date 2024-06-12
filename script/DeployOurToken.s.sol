@@ -26,10 +26,10 @@ import {Script} from 'forge-std/Script.sol';
 import {OurToken} from '../src/OurToken.sol';
 contract DeployOurToken is Script {
     uint256 public constant INITCOUNT = 1000;
-    function run() public {
+    function run() public returns (OurToken) {
         vm.startBroadcast();
-        new OurToken(INITCOUNT);
+        OurToken ourToken = new OurToken(INITCOUNT);
         vm.stopBroadcast();
-        // token.transfer(msg.sender, 1000);
+        return ourToken;
     }
 }
